@@ -11,13 +11,7 @@ const pool = new Pool({
 });
 
 app.use(
-  cors({
-    origin: [
-      'https://winserf-frontend.vercel.app/', // Vercel 正式網址
-      'http://localhost:3000' // 本地開發用
-    ],
-    credentials: true // 如果有用到 cookie 或認證
-  })
+  cors()
 );
 app.use(express.json());
 
