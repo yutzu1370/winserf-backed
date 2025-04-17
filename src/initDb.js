@@ -7,16 +7,16 @@ const pool = new Pool({
 async function createTodolistTable() {
   try {
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS todolist (
+      CREATE TABLE IF NOT EXISTS todos (
         id SERIAL PRIMARY KEY,
-        title VARCHAR(255) NOT NULL,
+        title TEXT NOT NULL,
         completed BOOLEAN DEFAULT FALSE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
-    console.log('✅ todolist 資料表已確認存在');
+    console.log('✅ todos 資料表已確認存在');
   } catch (err) {
-    console.error('❌ 建立 todolist 資料表失敗:', err);
+    console.error('❌ 建立 todos 資料表失敗:', err);
   } finally {
     await pool.end();
   }
