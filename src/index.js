@@ -10,7 +10,15 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      'https://winserf-frontend.vercel.app/', // Vercel 正式網址
+      'http://localhost:3000' // 本地開發用
+    ],
+    credentials: true // 如果有用到 cookie 或認證
+  })
+);
 app.use(express.json());
 
 const todosRouter = require('./todos');
